@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple CV - Professional Profile</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .cv-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+
+    .header p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      font-size: 1.8em;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+    }
+
+    /* Circular Skills Section */
+    .circular-skills {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .skill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .circle {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+
+    .circle svg {
+      transform: rotate(-90deg);
+    }
+
+    .circle .bg,
+    .circle .progress {
+      fill: none;
+      stroke-width: 8;
+      r: 40;
+      cx: 50;
+      cy: 50;
+    }
+
+    .circle .bg {
+      stroke: #eee;
+    }
+
+    .circle .progress {
+      stroke: #3498db;
+      stroke-dasharray: 251;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 1.5s ease-in-out;
+      stroke-linecap: round;
+    }
+
+    .circle .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .label {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    /* Meter Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-item {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #3498db;
+    }
+
+    .skill-name {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+
+    .skill-meter {
+      width: 100%;
+      height: 20px;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 10px;
+      background: #e0e6ed;
+      overflow: hidden;
+    }
+
+    .skill-meter::-webkit-meter-bar {
+      background: #e0e6ed;
+      border-radius: 10px;
+    }
+
+    .skill-meter::-webkit-meter-optimum-value {
+      background: linear-gradient(90deg, #3498db, #2980b9);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .skill-meter::-moz-meter-bar {
+      background: linear-gradient(90deg, #3498db, #2980b9);
+      border-radius: 10px;
+    }
+
+    .skill-percentage {
+      font-size: 0.9em;
+      color: #7f8c8d;
+      margin-top: 5px;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .circular-skills {
+        gap: 20px;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .header h1 {
+        font-size: 2em;
+      }
+      
+      .content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <div class="header">
+      <h1>Paul Samy Habib</h1>
+      <p>Full Stack Developer & Software Engineer</p>
+    </div>
+
+    <div class="content">
+      <div class="section">
+        <h2>Core Technologies</h2>
+        <div class="circular-skills">
+          <div class="skill">
+            <div class="circle" data-percent="90">
+              <svg width="100" height="100">
+                <circle class="bg" cx="50" cy="50" r="40"></circle>
+                <circle class="progress" cx="50" cy="50" r="40"></circle>
+              </svg>
+              <div class="text">JS</div>
+            </div>
+            <div class="label">JavaScript</div>
+          </div>
+
+          <div class="skill">
+            <div class="circle" data-percent="85">
+              <svg width="100" height="100">
+                <circle class="bg" cx="50" cy="50" r="40"></circle>
+                <circle class="progress" cx="50" cy="50" r="40"></circle>
+              </svg>
+              <div class="text">TS</div>
+            </div>
+            <div class="label">TypeScript</div>
+          </div>
+
+          <div class="skill">
+            <div class="circle" data-percent="80">
+              <svg width="100" height="100">
+                <circle class="bg" cx="50" cy="50" r="40"></circle>
+                <circle class="progress" cx="50" cy="50" r="40"></circle>
+              </svg>
+              <div class="text">PY</div>
+            </div>
+            <div class="label">Python</div>
+          </div>
+
+          <div class="skill">
+            <div class="circle" data-percent="88">
+              <svg width="100" height="100">
+                <circle class="bg" cx="50" cy="50" r="40"></circle>
+                <circle class="progress" cx="50" cy="50" r="40"></circle>
+              </svg>
+              <div class="text">NX</div>
+            </div>
+            <div class="label">Next.js</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-name">Next.js</div>
+            <meter class="skill-meter" value="88" max="100"></meter>
+            <div class="skill-percentage">88% - Advanced</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">TypeScript</div>
+            <meter class="skill-meter" value="85" max="100"></meter>
+            <div class="skill-percentage">85% - Advanced</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">Tailwind CSS</div>
+            <meter class="skill-meter" value="90" max="100"></meter>
+            <div class="skill-percentage">90% - Expert</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">Bootstrap</div>
+            <meter class="skill-meter" value="75" max="100"></meter>
+            <div class="skill-percentage">75% - Proficient</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">Python</div>
+            <meter class="skill-meter" value="80" max="100"></meter>
+            <div class="skill-percentage">80% - Advanced</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">SQL</div>
+            <meter class="skill-meter" value="82" max="100"></meter>
+            <div class="skill-percentage">82% - Advanced</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">NoSQL (MongoDB)</div>
+            <meter class="skill-meter" value="78" max="100"></meter>
+            <div class="skill-percentage">78% - Proficient</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">React</div>
+            <meter class="skill-meter" value="87" max="100"></meter>
+            <div class="skill-percentage">87% - Advanced</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">Node.js</div>
+            <meter class="skill-meter" value="83" max="100"></meter>
+            <div class="skill-percentage">83% - Advanced</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">Git & Version Control</div>
+            <meter class="skill-meter" value="85" max="100"></meter>
+            <div class="skill-percentage">85% - Advanced</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">REST APIs</div>
+            <meter class="skill-meter" value="88" max="100"></meter>
+            <div class="skill-percentage">88% - Advanced</div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-name">Responsive Design</div>
+            <meter class="skill-meter" value="92" max="100"></meter>
+            <div class="skill-percentage">92% - Expert</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Professional Summary</h2>
+        <p>Passionate Full Stack Developer with expertise in modern web technologies including Next.js, TypeScript, and Python. Experienced in building scalable applications using both SQL and NoSQL databases. Strong foundation in responsive design with Tailwind CSS and Bootstrap. Committed to writing clean, efficient code and staying current with industry best practices.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const circles = document.querySelectorAll('.circle');
+    
+    const animateCircles = () => {
+      circles.forEach(circle => {
+        const percent = circle.getAttribute('data-percent');
+        const progress = circle.querySelector('.progress');
+        const offset = 251 - (251 * percent / 100);
+        progress.style.strokeDashoffset = offset;
+      });
+    };
+
+    // Animate on page load
+    setTimeout(animateCircles, 500);
+
+    // Add hover effects to skill items
+    const skillItems = document.querySelectorAll('.skill-item');
+    skillItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        item.style.transform = 'translateY(-5px)';
+        item.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        item.style.transition = 'all 0.3s ease';
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        item.style.transform = 'translateY(0)';
+        item.style.boxShadow = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
